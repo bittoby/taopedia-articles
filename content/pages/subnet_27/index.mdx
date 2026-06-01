@@ -1,0 +1,62 @@
+---
+title: "Subnet 27: Nodexo"
+summary:
+  "Nodexo is Bittensor Subnet 27, a decentralized GPU compute marketplace where miners supply
+  hardware and validators benchmark it before rewards are paid."
+category: "Subnets"
+tags: ["Subnets", "Compute"]
+---
+
+Nodexo is Bittensor Subnet 27, a decentralized compute marketplace operated by Neural Internet. It
+lets people who own GPUs rent that hardware to people who need it, with the Bittensor network
+handling measurement and rewards instead of a central cloud provider. The subnet was previously
+known as the Neural Internet compute subnet (NI Compute), and public explorers now list it under the
+name Nodexo.
+
+## What Nodexo Provides
+
+Subnet 27 turns spare computing hardware into a shared, on-demand market. Miners register GPUs (and
+CPUs) into a common pool, and clients reserve that capacity to run their own workloads. According to
+[Neural Internet's Subnet 27 explainer](https://medium.com/@neuralinternet/subnet-27-decentralizing-compute-with-bittensor-8ee68c9af2ff),
+the goal is a permissionless compute market that combines otherwise siloed pools of compute so they
+can be validated and accessed without trusting a single operator.
+
+In Bittensor terms, Nodexo makes providing compute a competitive subnet task. Miners contribute
+hardware, validators measure how good that hardware actually is, and the resulting validator weights
+feed into [[Yuma Consensus]], which converts them into emissions.
+
+## Miner and Validator Roles
+
+Miners act as hardware providers. They contribute GPU and CPU capacity to the pool, run the
+containerized workloads assigned to them, and report performance data back to the network. Miners
+keep some control over their resources by setting reservation windows that release the hardware once
+the booked period ends.
+
+Validators run the measurement side using a hardware-attestation approach the project calls
+Proof-of-GPU. Rather than trusting a miner's self-reported specifications, a validator asks for the
+hardware details, issues computational challenges such as timed hashing tasks, and checks the speed
+and accuracy of the responses. It then turns those results into a performance score and writes the
+score on chain, which is what determines how work is allocated and how rewards are shared. Operators
+should treat the subnet repository as the source of truth for current setup and scoring details.
+
+## On-Chain Identity
+
+Live SN27 data is available on [TaoStats](https://taostats.io/subnets/27). Readers can also
+reproduce the chain identity fields with the Bittensor CLI command documented in the
+[btcli reference](https://docs.learnbittensor.org/btcli/#btcli-subnets-get-identity):
+`btcli subnets get-identity --netuid 27 --network finney`.
+
+Public explorers including [TaoStats](https://taostats.io/subnets/27) and
+[Subnet Alpha](https://subnetalpha.ai/subnet/nodexo/) currently list Subnet 27 under the name
+Nodexo, with the project website nodexo.ai and the subnet code maintained under the Neural Internet
+GitHub organization. Because chain identity fields can be updated by the subnet owner, run the
+command above to confirm the current values.
+
+## Further Reading
+
+- [Neural Internet compute subnet repository](https://github.com/neuralinternet/compute-subnet)
+- [Neural Internet's Subnet 27 explainer](https://medium.com/@neuralinternet/subnet-27-decentralizing-compute-with-bittensor-8ee68c9af2ff)
+- [Subnet 27 on TaoStats](https://taostats.io/subnets/27)
+- [Subnet 27 on Subnet Alpha](https://subnetalpha.ai/subnet/nodexo/)
+- [[Yuma Consensus]]
+- [[Mining and Validating]]
